@@ -4,7 +4,7 @@ MySQL - 8.0.15 : Database - fingernft
 *********************************************************************
 */
 
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 /*!40101 SET SQL_MODE=''*/;
 
@@ -18,18 +18,18 @@ DROP TABLE IF EXISTS `fc_admin_log`;
 
 CREATE TABLE `fc_admin_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `admin` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '管理员',
-  `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '管理员地址',
+  `admin` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '管理员',
+  `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '管理员地址',
   `type` int(11) DEFAULT NULL COMMENT '操作分类',
-  `action` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作动作',
+  `action` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '操作动作',
   `status` tinyint(1) DEFAULT NULL COMMENT '操作状态',
-  `result` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作结果，或者成功消息，或者失败消息',
-  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '补充信息',
+  `result` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '操作结果，或者成功消息，或者失败消息',
+  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '补充信息',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=205 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=205 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fc_admin_log` */
 
@@ -40,14 +40,14 @@ DROP TABLE IF EXISTS `fc_admin_notice`;
 CREATE TABLE `fc_admin_notice` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `notice_id` bigint(20) DEFAULT NULL COMMENT '通知ID',
-  `notice_title` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '通知标题',
+  `notice_title` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '通知标题',
   `admin_id` bigint(20) DEFAULT NULL COMMENT '接收通知的管理员ID',
   `read_time` bigint(20) DEFAULT NULL,
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fc_admin_notice` */
 
@@ -58,12 +58,12 @@ DROP TABLE IF EXISTS `fc_admin_permission`;
 CREATE TABLE `fc_admin_permission` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
-  `permission` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '权限',
+  `permission` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '权限',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fc_admin_permission` */
 
@@ -75,15 +75,15 @@ DROP TABLE IF EXISTS `fc_admin_role`;
 
 CREATE TABLE `fc_admin_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '角色名称',
-  `desc` varchar(1023) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '角色描述',
+  `name` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '角色名称',
+  `desc` varchar(1023) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '角色描述',
   `enabled` tinyint(1) DEFAULT '1' COMMENT '是否启用',
   `is_system` tinyint(1) DEFAULT '0',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fc_admin_role` */
 
@@ -107,7 +107,7 @@ CREATE TABLE `fc_admin_token` (
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fc_admin_token` */
 
@@ -119,24 +119,24 @@ DROP TABLE IF EXISTS `fc_admin_user`;
 
 CREATE TABLE `fc_admin_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '头像图片',
-  `username` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '管理员名称',
-  `nickname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '昵称',
-  `password` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '管理员密码',
-  `last_login_ip` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '最近一次登录IP地址',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '头像图片',
+  `username` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '管理员名称',
+  `nickname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '昵称',
+  `password` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '管理员密码',
+  `last_login_ip` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '最近一次登录IP地址',
   `last_login_time` bigint(20) DEFAULT NULL,
-  `role_ids` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '[]' COMMENT '角色列表',
-  `phone` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '手机号码',
+  `role_ids` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '[]' COMMENT '角色列表',
+  `phone` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '手机号码',
   `department_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '部门id',
   `job_id` bigint(20) DEFAULT NULL COMMENT '对应job表中职位',
-  `wechat` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '微信号',
-  `wechat_qrcode` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '微信二维码',
+  `wechat` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '微信号',
+  `wechat_qrcode` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '微信二维码',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否禁用：0否，1是',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fc_admin_user` */
 
@@ -148,8 +148,8 @@ DROP TABLE IF EXISTS `fc_contract`;
 
 CREATE TABLE `fc_contract` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '表id',
-  `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'nft name',
-  `symbol` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'nft symbol',
+  `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'nft name',
+  `symbol` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'nft symbol',
   `address` varchar(50) DEFAULT NULL COMMENT '合约地址',
   `type` int(11) DEFAULT NULL COMMENT '类型 3:ERC721 2.ERC1155',
   `short_url` varchar(100) DEFAULT NULL COMMENT '短地址',
@@ -161,7 +161,7 @@ CREATE TABLE `fc_contract` (
   `verify` tinyint(1) DEFAULT '0' COMMENT '是否已验证',
   `description` varchar(1000) DEFAULT NULL COMMENT '合约描述',
   `last_token_id` bigint(20) DEFAULT '0' COMMENT '上一次增发的tokenId',
-  `banner_url` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '封面',
+  `banner_url` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '封面',
   `get_info_times` int(11) DEFAULT '0' COMMENT '获取name和symbol次数',
   `is_royalties` tinyint(1) DEFAULT NULL COMMENT '是否支持版权',
   `signer` varchar(50) DEFAULT NULL COMMENT '签名人账号',
@@ -172,7 +172,7 @@ CREATE TABLE `fc_contract` (
   PRIMARY KEY (`id`),
   KEY `index2` (`address`),
   KEY `index3` (`symbol`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_contract` */
 
@@ -193,8 +193,8 @@ CREATE TABLE `fc_contract_nft` (
   `quantity` bigint(20) DEFAULT '0' COMMENT '数量',
   `locked` tinyint(1) DEFAULT NULL COMMENT '是否锁定',
   `locked_content` varchar(512) DEFAULT NULL COMMENT '锁定描述',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '描述',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '描述',
   `royalties` varchar(512) DEFAULT NULL COMMENT '版权',
   `properties` varchar(1024) DEFAULT NULL COMMENT '属性',
   `nft_verify` int(11) DEFAULT '0' COMMENT '是否已验证',
@@ -204,8 +204,8 @@ CREATE TABLE `fc_contract_nft` (
   `tx_hash` varchar(100) DEFAULT NULL COMMENT '区块链交易hash值',
   `anim_url` varchar(512) DEFAULT NULL COMMENT '视频音频地址',
   `anim_storage_id` bigint(20) DEFAULT NULL COMMENT '视频音频地址id',
-  `metadata_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '资源地址',
-  `metadata_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '资源内容',
+  `metadata_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '资源地址',
+  `metadata_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '资源内容',
   `get_meta_times` int(11) DEFAULT '0' COMMENT '获取资源次数',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
@@ -217,7 +217,7 @@ CREATE TABLE `fc_contract_nft` (
   KEY `index5` (`is_sync`),
   KEY `index6` (`create_time`),
   FULLTEXT KEY `index7` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_contract_nft` */
 
@@ -240,7 +240,7 @@ CREATE TABLE `fc_nft_category` (
   `update_time` bigint(20) DEFAULT NULL,
   `order` int(11) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_nft_category` */
 
@@ -258,7 +258,7 @@ CREATE TABLE `fc_nft_items` (
   `description` text,
   `img_url` varchar(512) DEFAULT NULL COMMENT '图片资源地址',
   `storage_id` bigint(20) DEFAULT NULL COMMENT '图片资源保存id',
-  `price` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '价格',
+  `price` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '价格',
   `usdt_price` decimal(20,4) DEFAULT '0.0000' COMMENT 'usdt价格',
   `paytoken_address` varchar(50) DEFAULT NULL COMMENT '支付方式地址',
   `sell_quantity` bigint(20) DEFAULT NULL COMMENT '售卖数量',
@@ -279,7 +279,7 @@ CREATE TABLE `fc_nft_items` (
   KEY `index4` (`nft_id`),
   KEY `index5` (`is_sync`),
   KEY `index6` (`onsell`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_nft_items` */
 
@@ -297,7 +297,7 @@ DROP TABLE IF EXISTS `fc_nft_like`;
 CREATE TABLE `fc_nft_like` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '表id',
   `nft_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'nft id',
-  `user_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户地址',
+  `user_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户地址',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
@@ -305,7 +305,7 @@ CREATE TABLE `fc_nft_like` (
   UNIQUE KEY `index3` (`nft_id`,`user_address`),
   KEY `index1` (`nft_id`),
   KEY `index4` (`user_address`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_nft_like` */
 
@@ -316,20 +316,20 @@ DROP TABLE IF EXISTS `fc_notice`;
 CREATE TABLE `fc_notice` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '表id',
   `type` char(1) DEFAULT NULL COMMENT '大类型1follow 2like 3trade',
-  `sub_type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '消息类型：0: "LIKE"\\n1: "FOLLOWING"\\n2: "ORDER"\\n3: "BID"\\n4: "BUY"\\n5: "SALE"\\n6: "CANCEL"\\n7: "CANCEL_BID"\\n8: "TRANSFER"\\n9: "MINT"\\n10: "BURN"',
+  `sub_type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '消息类型：0: "LIKE"\\n1: "FOLLOWING"\\n2: "ORDER"\\n3: "BID"\\n4: "BUY"\\n5: "SALE"\\n6: "CANCEL"\\n7: "CANCEL_BID"\\n8: "TRANSFER"\\n9: "MINT"\\n10: "BURN"',
   `user_id` bigint(20) DEFAULT '0' COMMENT '消息对应用户',
-  `owner` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '消息对应用户地址',
+  `owner` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '消息对应用户地址',
   `operator` varchar(50) DEFAULT '' COMMENT '操作者地址',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '消息内容',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '消息内容',
   `is_read` tinyint(1) DEFAULT '0' COMMENT '是否已读',
-  `image` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '显示图片',
-  `name` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '显示名称',
+  `image` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '显示图片',
+  `name` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '显示名称',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index2` (`owner`)
-) ENGINE=InnoDB AUTO_INCREMENT=278 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=278 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_notice` */
 
@@ -363,7 +363,7 @@ CREATE TABLE `fc_order` (
   `buyer_type` int(11) DEFAULT NULL COMMENT '购买token类型',
   `buyer_value` varchar(256) DEFAULT NULL COMMENT '购买token价格',
   `salt` varchar(100) DEFAULT NULL COMMENT '盐',
-  `signature` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '签名',
+  `signature` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '签名',
   `status` int(11) DEFAULT '0' COMMENT '状态0 未完成， 1完成',
   `expired` tinyint(1) DEFAULT '0' COMMENT '是否过期',
   `order_type` int(11) DEFAULT NULL COMMENT '订单类型',
@@ -380,7 +380,7 @@ CREATE TABLE `fc_order` (
   KEY `index6` (`buyer_token_id`),
   KEY `index7` (`salt`),
   KEY `index8` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_order` */
 
@@ -398,14 +398,14 @@ DROP TABLE IF EXISTS `fc_order_cache`;
 
 CREATE TABLE `fc_order_cache` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `key` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `key` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `value` varchar(1024) DEFAULT NULL,
   `expired_time` bigint(20) DEFAULT '0',
   `deleted` tinyint(1) DEFAULT '0',
   `create_time` bigint(20) DEFAULT '0',
   `update_time` bigint(20) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_order_cache` */
 
@@ -440,7 +440,7 @@ CREATE TABLE `fc_order_log` (
   KEY `index3` (`type`),
   KEY `index4` (`token`),
   KEY `index5` (`token_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_order_log` */
 
@@ -483,7 +483,7 @@ CREATE TABLE `fc_pay_token` (
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_pay_token` */
 
@@ -508,7 +508,7 @@ CREATE TABLE `fc_storage` (
   `ipfsHash` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `key` (`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='文件存储表';
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文件存储表';
 
 /*Data for the table `fc_storage` */
 
@@ -541,7 +541,7 @@ CREATE TABLE `fc_system` (
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `index2` (`key_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统配置表';
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系统配置表';
 
 /*Data for the table `fc_system` */
 
@@ -581,7 +581,7 @@ CREATE TABLE `fc_tx_order` (
   `update_time` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index2` (`tx_hash`)
-) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_tx_order` */
 
@@ -601,7 +601,7 @@ DROP TABLE IF EXISTS `fc_user`;
 CREATE TABLE `fc_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '表id',
   `nickname` varchar(100) DEFAULT NULL COMMENT '昵称',
-  `avatar` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '头像',
+  `avatar` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '头像',
   `address` varchar(50) NOT NULL DEFAULT '' COMMENT '钱包账号地址',
   `login_type` char(1) NOT NULL DEFAULT '1' COMMENT '登录类型',
   `last_login_time` bigint(20) DEFAULT NULL,
@@ -617,7 +617,7 @@ CREATE TABLE `fc_user` (
   PRIMARY KEY (`id`),
   KEY `index2` (`address`),
   KEY `index3` (`nickname`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_user` */
 
@@ -631,8 +631,8 @@ DROP TABLE IF EXISTS `fc_user_follow`;
 
 CREATE TABLE `fc_user_follow` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '表id',
-  `user_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户地址',
-  `following_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '关注人地址',
+  `user_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户地址',
+  `following_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '关注人地址',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT NULL,
   `update_time` bigint(20) DEFAULT NULL,
@@ -640,7 +640,7 @@ CREATE TABLE `fc_user_follow` (
   UNIQUE KEY `index3` (`user_address`,`following_address`),
   KEY `index1` (`user_address`),
   KEY `index2` (`following_address`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `fc_user_follow` */
 
@@ -652,10 +652,10 @@ CREATE TABLE `fc_user_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '用户地址',
   `type` int(11) DEFAULT '0' COMMENT '登录类型1：登录，2: 退出',
-  `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户ip地址',
-  `action` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作动作',
+  `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户ip地址',
+  `action` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '操作动作',
   `status` tinyint(1) DEFAULT NULL COMMENT '操作状态',
-  `result` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作结果，或者成功消息，或者失败消息',
+  `result` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '操作结果，或者成功消息，或者失败消息',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `create_time` bigint(20) DEFAULT '0' COMMENT '创建时间',
   `update_time` bigint(20) DEFAULT '0' COMMENT '更新时间',
